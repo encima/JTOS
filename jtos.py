@@ -7,7 +7,9 @@ class JTOS:
         'lte': '<=',
         'e': '=',
         'l': 'LIKE',
-        'nl': 'NOT LIKE'
+        'nl': 'NOT LIKE',
+        'a': 'AND',
+        'o': 'OR'
     }
 
     def __init__(self):
@@ -22,15 +24,16 @@ class JTOS:
             query_string += self.buildSelect(obj['select'])
         if 'where' in obj:
             query_string += self.buildWhere(obj['where'])
-        return query_string
+        return query_string.replace("  ", " ")
 
     def buildWhere(self, where_object):
-        where = ","
         clauses = []
         for w, v in where_object.items():
-            if len(clauses) > 
-            clauses.append("{0} {1} {2} {3}".format(v['join'], w, JTOS.mappings[v['op']], v['cmp']))
-        return "WHERE " + where.join(clauses)
+            join = None
+            if len(clauses) > 0:
+                join = 'AND' if not 'join' in v else v['join']
+            clauses.append(" {0} {1} {2} '{3}'".format(JTOS.mappings[join] if join in JTOS.mappings else "", w, JTOS.mappings[v['op']], v['cmp']))
+        return "WHERE" + "".join(clauses)
 
     def buildSelect(self, select_object):
         f = ",".join(select_object['fields'])
