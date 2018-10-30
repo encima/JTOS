@@ -22,9 +22,13 @@ class JTOS:
         query_string = ""
         if 'select' in obj:
             query_string += self.buildSelect(obj['select'])
+        print('where' in obj)
         if 'where' in obj:
             query_string += self.buildWhere(obj['where'])
-        return query_string.replace("  ", " ")
+        if 'orderBy' in obj['select']:
+            query_string += self.buildOrder(obj['select']['orderBy'])
+
+        return query_string.replace("  ", " ") + ";"
 
     def buildWhere(self, where_object):
         clauses = []
@@ -33,14 +37,20 @@ class JTOS:
             if len(clauses) > 0:
                 join = 'AND' if not 'join' in v else v['join']
             clauses.append(" {0} {1} {2} '{3}'".format(JTOS.mappings[join] if join in JTOS.mappings else "", w, JTOS.mappings[v['op']], v['cmp']))
-        return "WHERE" + "".join(clauses)
+        return " WHERE" + "".join(clauses)
 
     def buildSelect(self, select_object):
         f = ",".join(select_object['fields'])
         t = ",".join(select_object['tables'])
-        select = "SELECT {0} FROM {1} ".format(f,t)
+        select = "SELECT {0} FROM {1}".format(f,t)
         # TODO handle Joins
         return select
+
+    def buildOrder(self, order_object):
+        fields = []
+        for k,v in order_object.items():
+            fields.append("{0} {1}".format(k, v.upper()))
+        return " ORDER BY " + ", ".join(fields)
 
     def buildInsert(self, insert_object):
         pass
@@ -67,8 +77,9 @@ class JTOS:
 #             "",
 #             ""
 #         ],
-#         orderBy: [
-#         ]
+#         orderBy: {
+#            "field": "ASC" 
+#         }
 #     }
 #     where: {
 #         field: {
