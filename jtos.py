@@ -6,6 +6,7 @@ class JTOS:
         'gte': '>=',
         'lte': '<=',
         'e': '=',
+        'ne': '!=',
         'l': 'LIKE',
         'nl': 'NOT LIKE',
         'a': 'AND',
@@ -22,7 +23,6 @@ class JTOS:
         query_string = ""
         if 'select' in obj:
             query_string += self.buildSelect(obj['select'])
-        print('where' in obj)
         if 'where' in obj:
             query_string += self.buildWhere(obj['where'])
         if 'orderBy' in obj['select']:
@@ -36,7 +36,8 @@ class JTOS:
             join = None
             if len(clauses) > 0:
                 join = 'AND' if not 'join' in v else v['join']
-            clauses.append(" {0} {1} {2} '{3}'".format(JTOS.mappings[join] if join in JTOS.mappings else "", w, JTOS.mappings[v['op']], v['cmp']))
+            val = "'{}'".format(v['val']) if not isinstance(v['val'], int) else v['val'] 
+            clauses.append(" {0} {1} {2} {3}".format(JTOS.mappings[join] if join in JTOS.mappings else "", w, JTOS.mappings[v['op']], val))
         return " WHERE" + "".join(clauses)
 
     def buildSelect(self, select_object):

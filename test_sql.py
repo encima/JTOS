@@ -17,11 +17,16 @@ class TestJTOS:
         'where': {
             'email': {
                 'op': 'l',
-                'cmp': 't@test.com'
+                'val': 't@test.com'
             },
             'name': {
                 'op': 'e',
-                'cmp': 'test',
+                'val': 'test',
+                'join': 'a'
+            },
+            'id': {
+                'op': 'e',
+                'val': 3,
                 'join': 'o'
             }
         }
@@ -67,7 +72,7 @@ class TestJTOS:
         j = jtos.JTOS()
         stmt = j.parseObject(TestJTOS.sw_obj)
         print(stmt)
-        assert stmt == "SELECT email,id,password FROM users WHERE email LIKE 't@test.com' OR name = 'test';"
+        assert stmt == "SELECT email,id,password FROM users WHERE email LIKE 't@test.com' AND name = 'test' OR id = 3;"
 
     def test_select_order(self):
         j = jtos.JTOS()
