@@ -1,0 +1,178 @@
+{
+    "definitions": {},
+    "$schema": "",
+    "$id": "http://example.com/root.json",
+    "type": "object",
+    "title": "JTOS Schema",
+    "default": null,
+    "required": [
+      "select"
+    ],
+    "properties": {
+      "select": {
+        "$id": "#/properties/select",
+        "type": "object",
+        "title": "Select",
+        "required": [
+          "tables",
+          "fields"
+        ],
+        "properties": {
+          "tables": {
+            "$id": "#/properties/select/properties/tables",
+            "type": "array",
+            "title": "Tables",
+            "items": {
+              "$id": "#/properties/select/properties/tables/items",
+              "type": "string",
+              "title": "The Items Schema",
+              "default": "",
+              "examples": [
+                "users"
+              ],
+              "pattern": "^(.*)$"
+            }
+          },
+          "fields": {
+            "$id": "#/properties/select/properties/fields",
+            "type": "array",
+            "title": "Fields",
+            "items": {
+              "$id": "#/properties/select/properties/fields/items",
+              "type": "string",
+              "title": "The Items Schema",
+              "default": "",
+              "examples": [
+                "email",
+                "id",
+                "password"
+              ],
+              "pattern": "^(.*)$"
+            }
+          }
+        }
+      },
+      "where": {
+        "$id": "#/properties/where",
+        "type": "object",
+        "title": "Where",
+        "default": null,
+        "properties": {
+          "email": {
+            "$id": "#/properties/where/properties/email",
+            "type": "object",
+            "title": "The Email Schema",
+            "required": [
+              "op",
+              "val"
+            ],
+            "properties": {
+              "op": {
+                "$id": "#/properties/where/properties/email/properties/op",
+                "type": "string",
+                "title": "The Op Schema",
+                "default": "",
+                "examples": [
+                  "l"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "val": {
+                "$id": "#/properties/where/properties/email/properties/val",
+                "type": "string",
+                "title": "The Val Schema",
+                "default": "",
+                "examples": [
+                  "t@test.com"
+                ],
+                "pattern": "^(.*)$"
+              }
+            }
+          },
+          "name": {
+            "$id": "#/properties/where/properties/name",
+            "type": "object",
+            "title": "The Name Schema",
+            "required": [
+              "op",
+              "val",
+              "join"
+            ],
+            "properties": {
+              "op": {
+                "$id": "#/properties/where/properties/name/properties/op",
+                "type": "string",
+                "title": "The Op Schema",
+                "default": "",
+                "examples": [
+                  "e"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "val": {
+                "$id": "#/properties/where/properties/name/properties/val",
+                "type": "string",
+                "title": "The Val Schema",
+                "default": "",
+                "examples": [
+                  "test"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "join": {
+                "$id": "#/properties/where/properties/name/properties/join",
+                "type": "string",
+                "title": "The Join Schema",
+                "default": "",
+                "examples": [
+                  "a"
+                ],
+                "pattern": "^(.*)$"
+              }
+            }
+          },
+          "id": {
+            "$id": "#/properties/where/properties/id",
+            "type": "object",
+            "title": "The Id Schema",
+            "required": [
+              "op",
+              "val",
+              "join"
+            ],
+            "properties": {
+              "op": {
+                "$id": "#/properties/where/properties/id/properties/op",
+                "type": "string",
+                "title": "The Op Schema",
+                "default": "",
+                "examples": [
+                  "e"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "val": {
+                "$id": "#/properties/where/properties/id/properties/val",
+                "type": "integer",
+                "title": "The Val Schema",
+                "default": 0,
+                "examples": [
+                  3
+                ]
+              },
+              "join": {
+                "$id": "#/properties/where/properties/id/properties/join",
+                "type": "string",
+                "title": "The Join Schema",
+                "default": "",
+                "examples": [
+                  "o"
+                ],
+                "pattern": "^(.*)$"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
