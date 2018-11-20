@@ -21,6 +21,7 @@ class JTOS:
 
     def parseObject(self, obj):
         query_string = ""
+        # TODO test if json handling can be done before being passed to jtos
         if "select" in obj:
             query_string += self.buildSelect(obj["select"])
         if "where" in obj:
@@ -31,6 +32,7 @@ class JTOS:
             query_string += ' LIMIT {}'.format(obj['limit'])
         if 'offset' in obj:
             query_string += ' OFFSET {}'.format(obj['offset'])
+        print(query_string)
         return query_string.replace("  ", " ") + ";"
 
     def buildWhere(self, where_object):
