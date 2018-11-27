@@ -41,7 +41,9 @@ class JTOS:
             join = None
             if len(clauses) > 0:
                 join = "AND" if not "join" in v else v["join"]
-            val = "'{}'".format(v["val"]) if not isinstance(v["val"], int) else v["val"]
+            val = "'{}'".format(v["val"])
+            if isinstance(v["val"], int) or ('type' in v and v['type'] == 'sql'):
+                val = v['val']
             clauses.append(
                 " {0} {1} {2} {3}".format(
                     JTOS.mappings[join] if join in JTOS.mappings else "",
