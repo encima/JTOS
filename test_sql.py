@@ -6,11 +6,11 @@ class TestJTOS:
 
     sw_obj = {
         "select": {"tables": ["users"], "fields": ["email", "id", "password"]},
-        "where": {
-            "email": {"op": "l", "val": "t@test.com"},
-            "name": {"op": "e", "val": "test", "join": "a"},
-            "id": {"op": "e", "val": 3, "join": "o"},
-        },
+        "where": [
+            {"field": "email", "op": "l", "val": "t@test.com"},
+            {"field": "name", "op": "e", "val": "test", "join": "a"},
+            {"field": "id", "op": "e", "val": 3, "join": "o"}
+        ],
     }
 
     s_obj = {"select": {"tables": ["users"], "fields": ["email", "id", "password"]}}

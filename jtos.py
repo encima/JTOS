@@ -39,7 +39,7 @@ class JTOS:
     @staticmethod
     def build_where(where_object):
         clauses = []
-        for w, v in where_object.items():
+        for v in where_object:
             join = None
             if len(clauses) > 0:
                 join = "AND" if not "join" in v else v["join"]
@@ -49,7 +49,7 @@ class JTOS:
             clauses.append(
                 " {0} {1} {2} {3}".format(
                     JTOS.mappings[join] if join in JTOS.mappings else "",
-                    w,
+                    v['field'],
                     JTOS.mappings[v["op"]],
                     val,
                 )
