@@ -63,7 +63,7 @@ JSON to SQL. Inspired by the Loopback Query Language, this is a standalone Pytho
 ## Notes
 
 This does **no** authentication or validation,
-it just blindly trusts the tests?
+it just blindly trusts the tests.
 
 Do not run on production unless you are comfortable with it in your test environment first
 

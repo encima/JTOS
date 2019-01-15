@@ -25,6 +25,8 @@ class JTOS:
         # TODO test if json handling can be done before being passed to jtos
         if "select" in obj:
             query_string += self.build_select(obj["select"])
+        if "join" in obj:
+            query_string += self.build_join(obj["join"])
         if "where" in obj:
             query_string += self.build_where(obj["where"])
         if "orderBy" in obj["select"]:
