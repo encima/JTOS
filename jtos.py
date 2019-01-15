@@ -83,7 +83,19 @@ class JTOS:
 
     @staticmethod
     def build_insert(insert_object):
-        pass
+        fields = ",".join(list(insert_object["values"].keys()))
+        values = list(insert_object["values"].values())
+        val_string = ""
+        for k, v in enumerate(values):
+            if isinstance(v, int):
+                val_string += v
+            else:
+                val_string += "'{}'".format(v)
+            if k is not len(values) - 1:
+                val_string += ','
+
+        insert_string = "INSERT INTO {0}({1}) VALUES({2})".format(insert_object['table'], fields, val_string)
+        return insert_string
 
     @staticmethod
     def build_delete(delete_object):

@@ -48,10 +48,10 @@ JSON to SQL. Inspired by the Loopback Query Language, this is a standalone Pytho
 ### Ordering
 ```json
 {
-  select:{
+  "select":{
     ...,
     "orderBy": {
-      <field>: "ASC|DESC"
+      "<field>": "ASC|DESC"
     }
   }
 }
@@ -63,6 +63,34 @@ JSON to SQL. Inspired by the Loopback Query Language, this is a standalone Pytho
   "offset": 3
 }
 ```
+### Insert
+```json
+{
+  "insert": {
+    "table": "",
+    "values": {
+      "<field>": "<value>"
+    }
+  }
+}
+```
+
+
+## Operations
+
+* gt - >
+* lt - <
+* gte - >=
+* lte - <=
+* e - =
+* ne - !=
+* l - LIKE
+* nl - NOT LIKE
+* a - AND
+* a - OR
+
+---
+
 ## Notes
 
 This does **no** authentication or validation,
@@ -79,7 +107,7 @@ Tests, please! But also any work on Upserts or Delete are also greatly appreciat
 * [X] Select
 * [X] Where
 * [X] Joins
-* [] Insert
+* [ ] Insert
 * [ ] Upsert (this syntax is quite different so maybe needs a different parser)
 * [X] Delete
 

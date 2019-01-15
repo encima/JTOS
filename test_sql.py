@@ -44,6 +44,16 @@ class TestJTOS:
         }
     }
 
+    in_obj = {
+        "insert": {
+            "table": "users",
+            "values": {
+                "name": "test",
+                "email": "address"
+            }
+        }
+    }
+
     def test_creation(self):
         j = jtos.JTOS()
         assert j is not None
@@ -60,10 +70,14 @@ class TestJTOS:
     def test_select_order(self):
         j = jtos.JTOS()
         stmt = j.parse_object(TestJTOS.so_obj)
-        print(stmt)
         assert (
             stmt == "SELECT email,id,password FROM users ORDER BY email ASC, id DESC;"
         )
+
+    def test_insert(self):
+        j = jtos.JTOS()
+        stmt = j.build_insert(TestJTOS.in_obj['insert'])
+        assert(stmt == "INSERT INTO users(name,email) VALUES('test','address')")
 
     def test_delete(self):
         j = jtos.JTOS()
