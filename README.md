@@ -48,8 +48,11 @@ JSON to SQL. Inspired by the Loopback Query Language, this is a standalone Pytho
 ### Ordering
 ```json
 {
-  "orderBy": {
-    <field>: "ASC|DESC"
+  select:{
+    ...,
+    "orderBy": {
+      <field>: "ASC|DESC"
+    }
   }
 }
 ```
@@ -75,8 +78,9 @@ Tests, please! But also any work on Upserts or Delete are also greatly appreciat
 
 * [X] Select
 * [X] Where
-* [ ] Joins
-* [ ] Upsert
-* [ ] Delete
+* [X] Joins
+* [] Insert
+* [ ] Upsert (this syntax is quite different so maybe needs a different parser)
+* [X] Delete
 
   

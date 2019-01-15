@@ -37,6 +37,13 @@ class TestJTOS:
             }
         }
     }
+
+    de_obj = {
+        "delete": {
+            "table": "users",
+        }
+    }
+
     def test_creation(self):
         j = jtos.JTOS()
         assert j is not None
@@ -58,10 +65,18 @@ class TestJTOS:
             stmt == "SELECT email,id,password FROM users ORDER BY email ASC, id DESC;"
         )
 
+    def test_delete(self):
+        j = jtos.JTOS()
+        stmt = j.build_delete(TestJTOS.de_obj['delete'])
+        assert(stmt == "DELETE FROM users")
+        del_where = TestJTOS.de_obj
+        del_where['where'] = TestJTOS.sw_obj['where']
+        stmt = j.parse_object(del_where)
+        assert stmt == "DELETE FROM users WHERE email LIKE 't@test.com' AND name = 'test' OR id = 3;"
+
     def test_join(self):
         j = jtos.JTOS()
         stmt = j.build_join(TestJTOS.jo_obj['join'])
-        print(stmt)
         assert stmt == "left JOIN activities ON activities.id = users.id"
 
     def test_select(self):

@@ -22,14 +22,15 @@ class JTOS:
     def parse_object(self, obj):
         query_string = ""
 
-        # TODO test if json handling can be done before being passed to jtos
         if "select" in obj:
             query_string += self.build_select(obj["select"])
-        if "join" in obj:
+        elif "delete" in obj:
+            query_string += self.build_delete(obj["delete"])
+        if "join" in obj and "select" in obj:
             query_string += self.build_join(obj["join"])
         if "where" in obj:
             query_string += self.build_where(obj["where"])
-        if "orderBy" in obj["select"]:
+        if "select" in obj and "orderBy" in obj["select"]:
             query_string += self.build_order(obj["select"]["orderBy"])
         if 'limit' in obj:
             query_string += ' LIMIT {}'.format(obj['limit'])
@@ -58,7 +59,8 @@ class JTOS:
             )
         return " WHERE" + "".join(clauses)
 
-    def build_select(self, select_object):
+    @staticmethod
+    def build_select(select_object):
         f = ",".join(select_object["fields"])
         t = ",".join(select_object["tables"])
         select = "SELECT {0} FROM {1}".format(f, t)
@@ -85,7 +87,10 @@ class JTOS:
 
     @staticmethod
     def build_delete(delete_object):
-        pass
+        print(delete_object)
+        t = delete_object['table']
+        delete_string = "DELETE FROM {}".format(t)
+        return delete_string
 
     @staticmethod
     def build_update(update_object):
