@@ -4,16 +4,19 @@ import pytest
 
 class TestJTOS:
 
-    sw_obj = {
-        "select": {"tables": ["users"], "fields": ["email", "id", "password"]},
+    s_obj = {
+        "select": {"tables": ["users"], "fields": ["email", "id", "password"]}
+    }
+
+    w_obj = {
         "where": [
             {"field": "email", "op": "l", "val": "t@test.com"},
             {"field": "name", "op": "e", "val": "test", "join": "a"},
             {"field": "id", "op": "e", "val": 3, "join": "o"}
-        ],
+        ]
     }
 
-    s_obj = {"select": {"tables": ["users"], "fields": ["email", "id", "password"]}}
+    sw_obj = {**s_obj, **w_obj}
 
     so_obj = {
         "select": {
@@ -22,6 +25,7 @@ class TestJTOS:
             "orderBy": {"email": "ASC", "id": "desc"},
         }
     }
+
     jo_obj = {
         'join': {
             'type': 'left',

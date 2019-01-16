@@ -40,11 +40,14 @@ JSON to SQL. Inspired by the Loopback Query Language, this is a standalone Pytho
       "field": "",
       "op": <op>,
       "val": "",
-      "join": "o|a" //only used when there are more than one conditions
+      "join": "o|a"
     }
   ]
 }
 ```
+
+NOTE: An operator should only be included from the second index and it will be prepended to the built string
+
 ### Ordering
 ```json
 {
@@ -111,4 +114,6 @@ Tests, please! But also any work on Upserts or Delete are also greatly appreciat
 * [ ] Upsert (this syntax is quite different so maybe needs a different parser)
 * [X] Delete
 
+  ## Examples
   
+  Examples are included in the `tests` directory

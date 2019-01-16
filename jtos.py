@@ -24,10 +24,10 @@ class JTOS:
 
         if "select" in obj:
             query_string += self.build_select(obj["select"])
+            if "join" in obj:
+                query_string += self.build_join(obj["join"])
         elif "delete" in obj:
             query_string += self.build_delete(obj["delete"])
-        if "join" in obj and "select" in obj:
-            query_string += self.build_join(obj["join"])
         if "where" in obj:
             query_string += self.build_where(obj["where"])
         if "select" in obj and "orderBy" in obj["select"]:
@@ -45,7 +45,7 @@ class JTOS:
         for v in where_object:
             join = None
             if len(clauses) > 0:
-                join = "AND" if not "join" in v else v["join"]
+                join = "AND" if "join" not in v else v["join"]
             val = "'{}'".format(v["val"])
             if isinstance(v["val"], int) or ('type' in v and v['type'] == 'sql'):
                 val = v['val']
