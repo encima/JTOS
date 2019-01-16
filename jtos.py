@@ -71,7 +71,7 @@ class JTOS:
         f = join_object['conditions']['from']
         t = join_object['conditions']['to']
         jt = join_object['type']
-        join = "{0} JOIN {1} ON {1}.{2} = {3}.{4}".format(jt, f['table'], f['field'], t['table'], t['field'])
+        join = " {0} JOIN {1} ON {1}.{2} = {3}.{4}".format(jt, f['table'], f['field'], t['table'], t['field'])
         return join
 
     @staticmethod
