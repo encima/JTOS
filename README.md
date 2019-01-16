@@ -110,10 +110,12 @@ Tests, please! But also any work on Upserts or Delete are also greatly appreciat
 * [X] Select
 * [X] Where
 * [X] Joins
-* [ ] Insert
+* [X] Insert
 * [ ] Upsert (this syntax is quite different so maybe needs a different parser)
 * [X] Delete
 
-  ## Examples
+
+## Examples
   
-  Examples are included in the `tests` directory
+Examples are included in the `tests` directory
+

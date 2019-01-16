@@ -6,4 +6,4 @@ install:
 script:
   - pytest
 notifications:
-  webhooks: https://chat.citizenscience.ch/hooks/xnYY4LLB2LWXqmxHd/ABijvSTDjRoNvPLin6JyLTRyBDGNQTDmihLutzRcT5bDHmWg
+  webhooks: https://chat.citizenscience.ch/hooks/HyKJmkFFsxjNTx2ce/RkjhJoNPEXLgnCbpKnkDL4iodkZhiCdRxGKaM8mu79mAcmRx
