@@ -11,6 +11,8 @@ class JTOS:
         "nl": "NOT LIKE",
         "a": "AND",
         "o": "OR",
+        'i': 'IN',
+        'ni': 'NOT IN'
     }
 
     def __init__(self):
