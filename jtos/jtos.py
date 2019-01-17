@@ -113,8 +113,18 @@ class JTOS:
         pass
 
 
-# TODO auth against existing models to prevent malicious intent
+# TODO auth against existing models to prevent malicious usage
 
+if __name__ == '__main__':
+    j = JTOS()
+    so_obj = {
+        "select": {
+            "tables": ["users"],
+            "fields": ["email", "id", "password"],
+            "orderBy": {"email": "ASC", "id": "desc"},
+        }
+    }
+    query_string = j.parse_object(so_obj)
 
 # {
 #     select: {

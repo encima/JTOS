@@ -1,5 +1,5 @@
-import jtos
 import pytest
+from jtos import jtos
 
 
 class TestJTOS:
@@ -95,7 +95,7 @@ class TestJTOS:
     def test_join(self):
         j = jtos.JTOS()
         stmt = j.build_join(TestJTOS.jo_obj['join'])
-        assert stmt == "left JOIN activities ON activities.id = users.id"
+        assert stmt == " left JOIN activities ON activities.id = users.id"
 
     def test_select(self):
         j = jtos.JTOS()
