@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name = 'JTOS',
-    version = '0.8.2',
+    version = '0.8.3',
     description = 'A JSON query to SQL parser loosely based on the Loopback Query Language',
     long_description = long_description,
     url ="https://github.com/encima/jtos",

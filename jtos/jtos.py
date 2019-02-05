@@ -32,6 +32,8 @@ class JTOS:
             query_string += self.build_delete(obj["delete"])
         if "where" in obj:
             query_string += self.build_where(obj["where"])
+        if "select" in obj and "groupBy" in obj["select"]:
+            query_string += self.build_group(obj["select"]["groupBy"])
         if "select" in obj and "orderBy" in obj["select"]:
             query_string += self.build_order(obj["select"]["orderBy"])
         if 'limit' in obj:
@@ -82,6 +84,13 @@ class JTOS:
         for k, v in order_object.items():
             fields.append("{0} {1}".format(k, v.upper()))
         return " ORDER BY " + ", ".join(fields)
+
+    @staticmethod
+    def build_group(group_object):
+        fields = []
+        for field in group_object:
+            fields.append(field)
+        return " GROUP BY " + ", ".join(fields)
 
     @staticmethod
     def build_insert(insert_object):

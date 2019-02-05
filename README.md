@@ -59,6 +59,17 @@ NOTE: An operator should only be included from the second index and it will be p
   }
 }
 ```
+### Grouping
+```json
+{
+  "select":{
+    ...,
+    "groupBy": [
+      "<field>"
+    ]
+  }
+}
+```
 ### Paging
 ```json
 {

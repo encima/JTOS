@@ -77,6 +77,15 @@ class TestJTOS:
         assert (
             stmt == "SELECT email,id,password FROM users ORDER BY email ASC, id DESC;"
         )
+    
+    def test_select_order_group(self):
+        j = jtos.JTOS()
+        sg = TestJTOS.so_obj
+        sg['select']['groupBy'] = ['email', 'id']
+        stmt = j.parse_object(sg)
+        assert (
+            stmt == "SELECT email,id,password FROM users GROUP BY email, id ORDER BY email ASC, id DESC;"
+        )
 
     def test_insert(self):
         j = jtos.JTOS()

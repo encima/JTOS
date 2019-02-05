@@ -26,7 +26,7 @@ inflection==0.3.1
 itsdangerous==0.24
 Jinja2==2.10
 jsonschema==2.6.0
-JTOS==0.8.1
+JTOS==0.8.2
 Mako==1.0.7
 MarkupSafe==1.0
 more-itertools==4.3.0
