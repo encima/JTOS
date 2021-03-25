@@ -47,7 +47,7 @@ pytest-pudb==0.7.0
 python-dateutil==2.7.3
 python-dotenv==0.9.1
 python-editor==1.0.3
-PyYAML==4.2b4
+PyYAML==5.4
 readme-renderer==24.0
 requests==2.20.1
 requests-toolbelt==0.8.0
