@@ -40,7 +40,7 @@ psycopg2-binary==2.7.4
 pudb==2018.1
 py==1.7.0
 pycparser==2.19
-Pygments==2.2.0
+Pygments==2.7.4
 pytest==3.9.3
 pytest-ordering==0.6
 pytest-pudb==0.7.0
