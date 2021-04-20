@@ -38,7 +38,7 @@ prison==0.1.0
 psycopg2==2.7.4
 psycopg2-binary==2.7.4
 pudb==2018.1
-py==1.7.0
+py==1.10.0
 pycparser==2.19
 Pygments==2.2.0
 pytest==3.9.3
